@@ -178,7 +178,7 @@ int main(int argc, char** argv)
         CoolingOutputs outputs;
         CoolingController_Update(&state, &config, &inputs, &outputs);
 
-        // Broadcast tje status for other ECUs / diagnostics to see.
+        // Broadcast the status for other ECUs / diagnostics to see.
         CanFrame status_frame;
         CanProtocol_EncodeStatus(&inputs, &outputs, &status_frame);
         CanBus_Send(&bus, &status_frame);
