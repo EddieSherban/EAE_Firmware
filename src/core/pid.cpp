@@ -30,7 +30,7 @@ float Pid_Update(PidController* pid, float setpoint, float measurement, float dt
         derivative = (error - pid->prev_error) / dt_seconds;
     }
 
-    // Tentative output using the integral term as it stands before
+    // Tentative output using the iuntegral term as it stands before
     // this cycle's accumulation, to decide whether integrating
     // further would just push us deeper into saturation.
     float trial_output = (pid->kp * error) + (pid->ki * pid->integral) + (pid->kd * derivative);

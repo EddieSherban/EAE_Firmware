@@ -178,7 +178,7 @@ int main(int argc, char** argv)
         CoolingOutputs outputs;
         CoolingController_Update(&state, &config, &inputs, &outputs);
 
-        // Broadcast our status for other ECUs / diagnostics to see.
+        // Broadcast tje status for other ECUs / diagnostics to see.
         CanFrame status_frame;
         CanProtocol_EncodeStatus(&inputs, &outputs, &status_frame);
         CanBus_Send(&bus, &status_frame);
@@ -194,7 +194,7 @@ int main(int argc, char** argv)
                outputs.derate_request ? "YES" : "no",
                outputs.system_fault ? "FAULT" : "ok");
 
-        // On the very first cycle, prove the status frame we just
+        // on the very first cycle, prove the status frame we just
         // queued round-trips through the bus and decodes back to the
         // same values, as a sanity check on the CAN encode/decode path.
         if (i == 0)
